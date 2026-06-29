@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Stack Java Developer Bootcamp | Live Online Training | JustAcademy</title>
+<meta name="description" content="Learn enterprise Java development with Spring Boot, REST APIs, MySQL, and React. Live online bootcamp with real projects, certification, and placement support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#2B1B12;
+    --espresso-soft:#3E2A1C;
+    --parchment:#F5EFE4;
+    --paper:#FAF7F0;
+    --amber:#C9692C;
+    --amber-deep:#A6501E;
+    --steel:#3D4F5C;
+    --steel-soft:#5B6E7A;
+    --ink:#211510;
+    --line: rgba(43,27,18,0.16);
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --serif: 'Fraunces', serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--amber);color:var(--paper);}
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Visible focus for accessibility ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--espresso);
+    color:var(--parchment);
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:9px 28px;
+  }
+  .topbar .tag{color:#D9A479;}
+  .topbar .links a{margin-left:18px;opacity:0.85;transition:opacity .2s;}
+  .topbar .links a:hover{opacity:1;color:var(--amber);}
+
+  /* ---------- Header / Nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,239,228,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo .dot{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--amber);
+    display:inline-block;
+  }
+  .navlinks{display:flex;gap:32px;font-size:14.5px;font-weight:500;}
+  .navlinks a{position:relative;padding:4px 0;color:var(--espresso-soft);}
+  .navlinks a:hover{color:var(--amber-deep);}
+  .nav-cta{
+    background:var(--espresso);
+    color:var(--paper);
+    padding:11px 22px;
+    border-radius:3px;
+    font-size:14px;
+    font-weight:600;
+    font-family:var(--sans);
+    border:none;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--amber-deep);}
+  .navwrap{display:flex;align-items:center;gap:34px;}
+
+  @media (max-width:880px){
+    .navlinks{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:100px 0 90px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.5;
+    mask-image:linear-gradient(to bottom, black, transparent 85%);
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--amber-deep);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:1px;background:var(--amber-deep);
+  }
+
+  h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(38px, 5vw, 58px);
+    line-height:1.04;
+    letter-spacing:-0.015em;
+    color:var(--espresso);
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--amber-deep);
+    font-weight:700;
+  }
+
+  .hero-sub{
+    margin-top:24px;
+    font-size:17.5px;
+    color:var(--steel);
+    max-width:520px;
+    line-height:1.65;
+  }
+
+  .hero-ctas{
+    margin-top:36px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;
+    font-size:15px;
+    font-weight:600;
+    border-radius:3px;
+    cursor:pointer;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, background .2s, color .2s, border-color .2s;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--amber-deep);color:var(--paper);}
+  .btn-primary:hover{background:var(--espresso);}
+  .btn-ghost{border-color:var(--espresso);color:var(--espresso);background:transparent;}
+  .btn-ghost:hover{background:var(--espresso);color:var(--paper);}
+
+  .hero-meta{
+    margin-top:34px;
+    display:flex;
+    gap:28px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--steel-soft);
+    flex-wrap:wrap;
+  }
+  .hero-meta b{color:var(--espresso);font-size:14px;display:block;font-family:var(--sans);}
+
+  /* ---------- Architecture diagram (signature element) ---------- */
+  .diagram{
+    position:relative;
+    background:var(--espresso);
+    border-radius:6px;
+    padding:30px 24px 26px;
+    box-shadow:0 30px 60px -20px rgba(43,27,18,0.45);
+  }
+  .diagram-label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:#D9A479;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+    display:flex;justify-content:space-between;
+  }
+  .diagram-label span:last-child{color:#7A8E99;}
+
+  .stack{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .layer{
+    position:relative;
+    background:#3A271A;
+    border:1px solid rgba(217,164,121,0.18);
+    border-radius:4px;
+    padding:14px 16px;
+    color:var(--parchment);
+    font-family:var(--mono);
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .layer .name{display:flex;align-items:center;gap:10px;font-weight:500;}
+  .layer .name b{color:#fff;font-family:var(--sans);font-size:13.5px;font-weight:600;}
+  .layer .chip{
+    font-size:10.5px;
+    color:var(--amber);
+    border:1px solid rgba(201,105,44,0.5);
+    padding:2px 7px;
+    border-radius:20px;
+  }
+  .connector{
+    height:26px;
+    width:1px;
+    background:linear-gradient(to bottom, rgba(217,164,121,0.5), rgba(217,164,121,0.1));
+    margin-left:24px;
+    position:relative;
+  }
+  .connector::after{
+    content:"↓";
+    position:absolute;
+    left:-6px;top:6px;
+    color:rgba(217,164,121,0.6);
+    font-size:11px;
+  }
+  .pulse-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#7CC576;
+    box-shadow:0 0 0 0 rgba(124,197,118,0.6);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(124,197,118,0.5);}
+    70%{box-shadow:0 0 0 7px rgba(124,197,118,0);}
+    100%{box-shadow:0 0 0 0 rgba(124,197,118,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pulse-dot{animation:none;}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:84px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;}
+  h2{
+    font-family:var(--serif);
+    font-size:clamp(28px, 3.4vw, 38px);
+    font-weight:600;
+    color:var(--espresso);
+    letter-spacing:-0.01em;
+    line-height:1.15;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--steel);
+    font-size:16px;
+  }
+
+  .divider{
+    border:none;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- Why Java (reasoning section) ---------- */
+  .why{background:var(--paper);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:880px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:540px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{
+    background:var(--paper);
+    padding:32px 26px;
+  }
+  .why-card .num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--amber-deep);
+    margin-bottom:14px;
+  }
+  .why-card h3{
+    font-family:var(--sans);
+    font-size:16.5px;
+    font-weight:700;
+    color:var(--espresso);
+    margin-bottom:8px;
+  }
+  .why-card p{font-size:14.5px;color:var(--steel);}
+
+  /* ---------- Curriculum (blueprint timeline) ---------- */
+  .curriculum{background:var(--espresso);color:var(--parchment);}
+  .curriculum .section-head h2{color:var(--paper);}
+  .curriculum .section-head p{color:#C9B9A8;}
+  .curriculum .eyebrow{color:var(--amber);}
+  .curriculum .eyebrow::before{background:var(--amber);}
+
+  .modules{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  @media (max-width:920px){.modules{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.modules{grid-template-columns:1fr;}}
+
+  .module{
+    background:var(--espresso-soft);
+    border:1px solid rgba(217,164,121,0.16);
+    border-radius:5px;
+    padding:24px 22px;
+    transition:border-color .2s, transform .2s;
+  }
+  .module:hover{border-color:var(--amber);transform:translateY(-2px);}
+  .module .mod-index{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:#D9A479;
+    margin-bottom:12px;
+    display:block;
+  }
+  .module h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin-bottom:10px;
+    color:#fff;
+  }
+  .module ul{list-style:none;}
+  .module li{
+    font-size:13.5px;
+    color:#BDA995;
+    padding:5px 0 5px 16px;
+    position:relative;
+    border-top:1px solid rgba(217,164,121,0.08);
+  }
+  .module li:first-child{border-top:none;}
+  .module li::before{
+    content:"▸";
+    position:absolute;left:0;top:5px;
+    color:var(--amber);
+    font-size:11px;
+  }
+
+  /* ---------- Projects ---------- */
+  .projects{background:var(--parchment);}
+  .proj-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  @media (max-width:780px){.proj-list{grid-template-columns:1fr;}}
+  .proj{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:3px solid var(--amber-deep);
+    padding:26px 28px;
+    border-radius:3px;
+  }
+  .proj h3{
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:600;
+    color:var(--espresso);
+    margin-bottom:8px;
+  }
+  .proj p{font-size:14.5px;color:var(--steel);}
+  .proj .tagrow{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .proj .tagrow span{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--amber-deep);
+    background:rgba(201,105,44,0.08);
+    border:1px solid rgba(201,105,44,0.25);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+
+  /* ---------- Career outcomes ---------- */
+  .careers{background:var(--steel);color:var(--paper);}
+  .careers .section-head h2{color:var(--paper);}
+  .careers .section-head p{color:#C7D2D8;}
+  .careers .eyebrow{color:#A9C2CC;}
+  .careers .eyebrow::before{background:#A9C2CC;}
+  .role-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .role-pill{
+    font-family:var(--mono);
+    font-size:13.5px;
+    border:1px solid rgba(255,255,255,0.28);
+    padding:10px 18px;
+    border-radius:30px;
+    color:var(--paper);
+  }
+  .sector-row{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+    border-top:1px solid rgba(255,255,255,0.18);
+    padding-top:32px;
+  }
+  @media (max-width:880px){.sector-row{grid-template-columns:repeat(2,1fr);}}
+  .sector{font-size:13.5px;color:#D7E0E4;}
+  .sector b{display:block;font-family:var(--serif);font-size:22px;color:var(--paper);font-weight:600;margin-bottom:6px;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--paper);}
+  .faq-list{max-width:760px;}
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:22px 0;
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:600;
+    color:var(--espresso);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+  }
+  .faq-q .icon{
+    font-family:var(--mono);
+    color:var(--amber-deep);
+    font-size:18px;
+    transition:transform .25s;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .faq-item.open .faq-q .icon{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .faq-a p{
+    padding-bottom:22px;
+    font-size:14.5px;
+    color:var(--steel);
+    max-width:660px;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:var(--amber-deep);
+    color:var(--paper);
+    text-align:center;
+    padding:90px 0;
+  }
+  .final-cta h2{color:var(--paper);}
+  .final-cta p{color:#FBE3D1;margin-top:14px;font-size:16.5px;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:34px;}
+  .final-cta .btn-primary{background:var(--espresso);}
+  .final-cta .btn-primary:hover{background:#1c110b;}
+  .final-cta .btn-ghost{border-color:var(--paper);color:var(--paper);}
+  .final-cta .btn-ghost:hover{background:var(--paper);color:var(--amber-deep);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--espresso);
+    color:#A9907D;
+    padding:50px 0 30px;
+    font-size:13.5px;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    border-bottom:1px solid rgba(217,164,121,0.15);
+    padding-bottom:34px;
+    margin-bottom:24px;
+  }
+  .foot-logo{
+    font-family:var(--serif);
+    font-size:20px;
+    color:var(--paper);
+    margin-bottom:10px;
+  }
+  .foot-links{display:flex;gap:40px;flex-wrap:wrap;}
+  .foot-links h4{
+    color:var(--parchment);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:14px;
+    font-family:var(--mono);
+  }
+  .foot-links li{list-style:none;margin-bottom:9px;}
+  .foot-links a:hover{color:var(--amber);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:var(--mono);font-size:12px;
+  }
+
+  @media (max-width:600px){
+    section{padding:60px 0;}
+    .hero{padding:70px 0 60px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="tag">★ 4.8 rated bootcamp · Live online · Delhi &amp; Mumbai cohorts</span>
+    <span class="links">
+      <a href="https://www.justacademy.co/download-general-brochure">Download Brochure</a>
+      <a href="https://www.justacademy.co/register-for-course-demo">Free Demo</a>
+    </span>
+  </div>
+</div>
+
+<header>
+  <nav>
+    <a class="logo" href="https://www.justacademy.co/"><span class="dot"></span>JustAcademy</a>
+    <div class="navwrap">
+      <div class="navlinks">
+        <a href="#why">Why Java</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#projects">Projects</a>
+        <a href="#careers">Careers</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://www.justacademy.co/register-for-course-demo">Book Free Demo</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Full Stack Java Developer Bootcamp</div>
+      <h1>Learn to engineer software, <em>not just write code.</em></h1>
+      <p class="hero-sub">
+        A live, online bootcamp that teaches Java, Spring Boot, MySQL, REST APIs, and React the way enterprise teams actually build with them — through architecture, structure, and real production-style projects.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.justacademy.co/register-for-course-demo">Request Free Demo →</a>
+        <a class="btn btn-ghost" href="https://www.justacademy.co/download-general-brochure">Download Brochure</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>4.8 / 5</b>54 learner ratings</div>
+        <div><b>Live + Recorded</b>lifetime access</div>
+        <div><b>Job Assistance</b>resume + mock interviews</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="diagram">
+        <div class="diagram-label"><span>// request lifecycle</span><span>status: 200 OK</span></div>
+        <div class="stack">
+          <div class="layer">
+            <span class="name"><b>Frontend</b> · HTML / CSS / React</span>
+            <span class="chip">UI</span>
+          </div>
+          <div class="connector"></div>
+          <div class="layer">
+            <span class="name"><b>REST API</b> · JSON over HTTP</span>
+            <span class="chip">JWT auth</span>
+          </div>
+          <div class="connector"></div>
+          <div class="layer">
+            <span class="name"><b>Spring Boot</b> · Business logic</span>
+            <span class="chip">Java</span>
+          </div>
+          <div class="connector"></div>
+          <div class="layer">
+            <span class="name"><b>MySQL</b> · Persistence layer</span>
+            <span class="pulse-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why enterprise teams still build on Java</div>
+      <h2>Reliability is a feature, not an accident.</h2>
+      <p>Banking platforms, airline systems, and healthcare software don't pick technology because it's trendy — they pick what stays stable for a decade. This bootcamp is built around understanding that environment.</p>
+    </div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="num">01</div>
+      <h3>Built for scale</h3>
+      <p>Learn how systems are designed to support thousands of concurrent users without falling over.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">02</div>
+      <h3>Structured by design</h3>
+      <p>Code organization and architecture aren't afterthoughts — they're taught as core engineering skills.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">03</div>
+      <h3>Security-aware</h3>
+      <p>Authentication, token-based access, and safe handling of sensitive data are built into every project.</p>
+    </div>
+    <div class="why-card">
+      <div class="num">04</div>
+      <h3>Long-term careers</h3>
+      <p>Java roles remain among the most consistently hired across fintech, SaaS, and enterprise consulting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What you'll build toward</div>
+      <h2>From programming fundamentals to a full enterprise stack.</h2>
+      <p>Eleven structured modules — each one a layer in the same system you'll be able to design, build, and deploy by the end.</p>
+    </div>
+    <div class="modules">
+      <div class="module">
+        <span class="mod-index">Module 01</span>
+        <h3>Programming Foundations</h3>
+        <ul>
+          <li>Algorithms &amp; flowcharts</li>
+          <li>Variables, operators, control flow</li>
+          <li>Functions and debugging basics</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 02</span>
+        <h3>Core Java</h3>
+        <ul>
+          <li>JVM architecture &amp; setup</li>
+          <li>Arrays, strings, collections</li>
+          <li>Wrapper classes</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 03</span>
+        <h3>Object-Oriented Programming</h3>
+        <ul>
+          <li>Classes, constructors, encapsulation</li>
+          <li>Inheritance &amp; polymorphism</li>
+          <li>Interfaces &amp; exception handling</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 04</span>
+        <h3>Database Management with MySQL</h3>
+        <ul>
+          <li>RDBMS concepts &amp; schema design</li>
+          <li>CRUD operations &amp; joins</li>
+          <li>Indexing &amp; optimization</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 05</span>
+        <h3>Backend with Spring Boot</h3>
+        <ul>
+          <li>Dependency injection</li>
+          <li>RESTful service development</li>
+          <li>Hibernate &amp; JPA integration</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 06</span>
+        <h3>REST API Development</h3>
+        <ul>
+          <li>HTTP methods &amp; JSON</li>
+          <li>Postman testing</li>
+          <li>JWT authentication</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 07</span>
+        <h3>Frontend (HTML, CSS, JS)</h3>
+        <ul>
+          <li>Semantic HTML &amp; forms</li>
+          <li>Flexbox, Grid, responsive design</li>
+          <li>DOM manipulation &amp; ES6</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 08</span>
+        <h3>React Development</h3>
+        <ul>
+          <li>Components, props &amp; state</li>
+          <li>Hooks: useState, useEffect</li>
+          <li>API integration in React</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 09</span>
+        <h3>Git &amp; Version Control</h3>
+        <ul>
+          <li>Branching &amp; merge conflicts</li>
+          <li>Pull requests on GitHub</li>
+          <li>Deploying code via GitHub</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 10</span>
+        <h3>Full Stack Project Build</h3>
+        <ul>
+          <li>Architecture planning</li>
+          <li>Frontend–backend integration</li>
+          <li>Authentication implementation</li>
+        </ul>
+      </div>
+      <div class="module">
+        <span class="mod-index">Module 11</span>
+        <h3>Deployment &amp; Interview Prep</h3>
+        <ul>
+          <li>Cloud deployment basics &amp; CI/CD</li>
+          <li>Resume &amp; GitHub portfolio</li>
+          <li>Mock interviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Real systems, not demos</div>
+      <h2>Projects modeled on actual business applications.</h2>
+      <p>Every project mirrors how enterprise teams structure work — role-based access, multi-module CRUD, and database-integrated dashboards.</p>
+    </div>
+    <div class="proj-list">
+      <div class="proj">
+        <h3>Enterprise Admin Dashboard</h3>
+        <p>A role-based management system with authentication tiers, designed the way internal company tools are structured.</p>
+        <div class="tagrow"><span>Spring Boot</span><span>MySQL</span><span>React</span></div>
+      </div>
+      <div class="proj">
+        <h3>Authentication-Driven Platform</h3>
+        <p>A JWT-secured application covering signup, login, and protected API routes — the backbone of most production systems.</p>
+        <div class="tagrow"><span>REST API</span><span>JWT</span><span>Java</span></div>
+      </div>
+      <div class="proj">
+        <h3>Multi-Module CRUD System</h3>
+        <p>A database-integrated tool with multiple connected modules, built to practice real application architecture decisions.</p>
+        <div class="tagrow"><span>Hibernate</span><span>JPA</span><span>MySQL</span></div>
+      </div>
+      <div class="proj">
+        <h3>API-Driven E-Commerce Flow</h3>
+        <p>A frontend-to-backend commerce flow with product, cart, and order APIs tested end-to-end through Postman.</p>
+        <div class="tagrow"><span>Spring Boot</span><span>React</span><span>Postman</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="careers" id="careers">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Where this leads</div>
+      <h2>Career paths built on Java's enterprise footprint.</h2>
+      <p>The same reliability that keeps Java in enterprise systems keeps demand for Java developers steady across these roles.</p>
+    </div>
+    <div class="role-grid">
+      <span class="role-pill">Full Stack Java Developer</span>
+      <span class="role-pill">Java Backend Developer</span>
+      <span class="role-pill">Spring Boot Developer</span>
+      <span class="role-pill">Software Engineer</span>
+      <span class="role-pill">Enterprise Application Developer</span>
+    </div>
+    <div class="sector-row">
+      <div class="sector"><b>Fintech</b>Payment &amp; banking platforms</div>
+      <div class="sector"><b>SaaS</b>Enterprise software firms</div>
+      <div class="sector"><b>Healthcare</b>Patient &amp; records systems</div>
+      <div class="sector"><b>Logistics</b>Supply chain software</div>
+      <div class="sector"><b>Consulting</b>Custom enterprise builds</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Common questions</div>
+      <h2>Before you enroll.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">Is this bootcamp suitable for beginners?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Yes. The program starts with core programming fundamentals and Core Java before progressing into Spring Boot, databases, and full stack development.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are the classes conducted online?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Yes, training is delivered through live online interactive sessions with mentor-led coding practice and real-time project work. Classroom batches are also available in Delhi and Mumbai.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I learn Spring Boot and React?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Yes. Spring Boot is central to the backend curriculum, and React is taught for building the frontend that connects to your APIs.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What kind of projects are included?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Projects include enterprise dashboards, authentication modules, multi-module CRUD systems, and API-driven platforms — built to resemble real business applications.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does this bootcamp include placement support?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Yes. Learners receive resume support, GitHub portfolio guidance, technical interview preparation, and placement assistance after completing the program.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will I receive a certificate?<span class="icon">+</span></button>
+        <div class="faq-a"><p>Yes, you'll receive a Full Stack Java Developer certificate of completion after finishing the training and required projects.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Start building systems that are built to last.</h2>
+    <p>Book a free live demo session and see how the curriculum works before you enroll.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.justacademy.co/register-for-course-demo">Request Free Demo →</a>
+      <a class="btn btn-ghost" href="https://www.justacademy.co/download-general-brochure">Download Brochure</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">JustAcademy</div>
+        <p style="max-width:280px;">Technology training across Mumbai, Pune, and Delhi, with live online programs worldwide.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Bootcamp</h4>
+          <ul>
+            <li><a href="https://www.justacademy.co/job-bootcamp-detail/full-stack-java-developer-bootcamp-online-live-interactive-training-with-real-projects">Full Stack Java (Online)</a></li>
+            <li><a href="https://www.justacademy.co/job-bootcamp-detail/delhi/full-stack-java-developer-bootcamp-in-delhi-live-online-enterprise-application-training">Full Stack Java (Delhi)</a></li>
+            <li><a href="https://www.justacademy.co/job-bootcamp">View All Bootcamps</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://www.justacademy.co/register-for-course-demo">Free Demo</a></li>
+            <li><a href="https://www.justacademy.co/download-general-brochure">Brochure</a></li>
+            <li><a href="https://www.justacademy.co/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://www.justacademy.co/about-us">About Us</a></li>
+            <li><a href="https://www.justacademy.co/student-placed">Students Placed</a></li>
+            <li><a href="https://www.justacademy.co/contact-us">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 JustAcademy. All rights reserved.</span>
+      <span>justacademy.co</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    if(item.classList.contains('open')){
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
